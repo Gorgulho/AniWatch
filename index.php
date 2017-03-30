@@ -129,7 +129,7 @@
 
     <!-- Page Loader
         ===================================== -->
-    <div id="pageloader">
+    <div id="pageloader" class="bg-success">
         <div class="loader-item">
             <img src="img/other/puff.svg" alt="page loader">
         </div>

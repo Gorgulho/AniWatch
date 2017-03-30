@@ -95,7 +95,7 @@
         
         <!-- Page Loader
         ===================================== -->
-		<div id="pageloader">
+		<div id="pageloader" class="bg-success">
 			<div class="loader-item">
                 <img src="img/other/puff.svg" alt="page loader">
             </div>
@@ -131,7 +131,7 @@
 
                         <li class=""><a href="#"><span class="color-dark">Contactos</span> </a>
 
-                        <li class=""><a href="logout.php?logout" id="logout" class="color-dark" >Logout</a>
+                        <li class=""><a href="logout.php?logout" id="logout"  ><span class="color-black"> Logout</span></a>
 
                         <li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search fa-fw color-success"></i></a></li>
                     </ul>
@@ -168,13 +168,13 @@
         
         <!-- Intro Area
         ===================================== -->
-        <header class="intro pt100 pb100 parallax-window" data-parallax="scroll" data-speed="0.5" data-image-src="img/bg/img-bg-2.jpg">
+        <header class="intro pt100 pb100 parallax-window" data-parallax="scroll" data-speed="0.5" data-image-src="img/other/fundo.png">
             <div class="intro-body">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="brand-heading font-montserrat text-uppercase color-light tlt" data-in-effect="fadeInDown">Bem vindo ao AniWatch</h1>
-                            <p class="intro-text color-light text-open-sans text-uppercase tlt" data-in-effect="swing">Colocar aqui um frase fixolas referente a animes.</p>
+                            <h1 class="brand-heading font-montserrat text-uppercase color-success tlt" data-in-effect="fadeInDown">Bem vindo ao AniWatch</h1>
+                            <p class="intro-text color-cyan text-open-sans text-uppercase tlt" data-in-effect="swing">Colocar aqui um frase fixolas referente a animes.</p>
                         </div>
                     </div>
                 </div>
