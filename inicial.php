@@ -23,7 +23,7 @@
 
 		if(isset($_SESSION['user'])) //se o utiliazador tiver com conta iniciada pode entrar na página
 		{
-			echo 'Wellcome ', $_SESSION['user'], ' !'; //mostra uma mensagem de boas vindas ao utilizador (falta alterar a posição )
+
 		}
 		if(!isset($_SESSION['user'])) //se o utiliazador tiver com conta iniciada será rederecionado ao formulário de login/registo
 		{
@@ -123,7 +123,7 @@
                 <div class="navbar-collapse collapse navbar-main-collapse">
                     <ul class="nav navbar-nav">
 
-                        <li class=""><a href="#"><span class="color-dark">Perfil</span></a>
+                        <li class=""><a href="#"><span class="color-dark"><?php echo $_SESSION['user'];?></span></a>
 
                         <li class=""><a href="#"><span class="color-dark">Lista</span> </a>
 

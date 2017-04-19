@@ -275,7 +275,7 @@
                                 type: 'POST',
                                 success: function (data) {
                                     if (data.status == 'success') {
-                                        toastr.success('Log in feito com sucesso', 'Sucesso!');
+                                        //toastr.success('Log in feito com sucesso', 'Sucesso!');
                                         window.location.href="inicial.php";
                                     }else if (data.status == 'error') {
                                         toastr.error('Username ou Password incorretos.',
