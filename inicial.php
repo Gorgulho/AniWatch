@@ -16,19 +16,14 @@
         <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
         <?php
-		session_start();
+            session_start();
 
-		include ('bd/db.php');
-		
+            include ('bd/db.php'); //vai fazer conecção a base de dados
 
-		if(isset($_SESSION['user'])) //se o utiliazador tiver com conta iniciada pode entrar na página
-		{
-
-		}
-		if(!isset($_SESSION['user'])) //se o utiliazador tiver com conta iniciada será rederecionado ao formulário de login/registo
-		{
-			  header('location:index.php'); //rederecionamento para o index
-		}
+            if(!isset($_SESSION['user'])) //se o utiliazador tiver com conta iniciada será rederecionado ao formulário de login/registo
+            {
+                header('location:index.php'); //rederecionamento para o index
+            }
 		?>
         
         <!-- Load Core CSS 
@@ -122,8 +117,14 @@
         
                 <div class="navbar-collapse collapse navbar-main-collapse">
                     <ul class="nav navbar-nav">
+                        <?php
+                            if($_SESSION['type'] == 'admin') 
+                            {
+                                echo '<li class=""><a href="administracao.php"><span class="color-dark">Administração</span> </a>';
+                            }
+                        ?>
 
-                        <li class=""><a href="#"><span class="color-dark"><?php echo $_SESSION['user'];?></span></a>
+                        <li class=""><a href="profile.php?usr=<?php echo $_SESSION["user"];?>"><span class="color-dark"><?php echo $_SESSION['user'];?></span></a>
 
                         <li class=""><a href="#"><span class="color-dark">Lista</span> </a>
 
@@ -131,9 +132,14 @@
 
                         <li class=""><a href="#"><span class="color-dark">Contactos</span> </a>
 
-                        <li class=""><a href="logout.php?logout" id="logout"  ><span class="color-black"> Logout</span></a>
+                        <?php
+                            if($_SESSION['user']) 
+                            {
+                                echo '<li class=""><a href="logout.php?logout" id="logout"  ><span class="color-black"> Sair</span></a>';
+                            }
+                        ?>
 
-                        <li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search fa-fw color-success"></i></a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search fa-fw color-success"></i><span class="color-dark">Pesquisa</span></a></li>
                     </ul>
                 
                 </div>
@@ -173,7 +179,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="brand-heading font-montserrat text-uppercase color-success tlt" data-in-effect="fadeInDown">Bem vindo ao AniWatch</h1>
+                            <h1 class="brand-heading font-montserrat text-uppercase color-success  animated infinite" data-animation="pulse">Bem vindo ao AniWatch</h1>
                             <p class="intro-text color-cyan text-open-sans text-uppercase tlt" data-in-effect="swing">Colocar aqui um frase fixolas referente a animes.</p>
                         </div>
                     </div>
@@ -194,7 +200,7 @@
         <div id="welcome" class="pt75">
             <div class="container">
                 <div class="row">
-                    
+                    <!-- http://localhost/template/html/op-index-bw-mobile-developer-1.html   http://localhost/template/html/shortcode-teams.html para fazer o display dos animes da season-->
                     <!-- title start -->
                     <div class="col-md-12 text-center">
                         <h1 class="font-size-normal">

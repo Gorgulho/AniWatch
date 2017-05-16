@@ -6,9 +6,21 @@
     $email = $_POST['email'];
     $pass = sha1($_POST['password']);
     $pass2 = sha1($_POST['password_conf']);
+    $gender = $_POST['gender'];
 
     $check = "SELECT * FROM users WHERE email='".$email."'";
     $check2 = "SELECT * FROM users WHERE username='".$username."'";
+
+    $num = rand(1, 12);
+
+    if($gender == "female")
+    {
+        $picture = "perfis/female".$num.".png";
+    }
+    else
+    {
+        $picture = "perfis/male".$num.".png";
+    }
 
     if($pass == $pass2 && $pass != 'da39a3ee5e6b4b0d3255bfef95601890afd80709' && $pass2 != 'da39a3ee5e6b4b0d3255bfef95601890afd80709')
     {
@@ -22,7 +34,7 @@
         }
         else
         {
-            $sql= "INSERT INTO users (username, email, password) VALUES ('".$username."','".$email."','".$pass."')";
+            $sql= "INSERT INTO users (username, email, password, genre, picture) VALUES ('".utf8_encode($username)."','".$email."','".$pass."', '".$gender."', '".$picture."')";
 
             if(mysqli_query($conn, $sql))
             {

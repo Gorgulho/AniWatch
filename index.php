@@ -89,39 +89,6 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    <!-- JQuery Core
-    =====================================-->
-    <script src="js/core/jquery.min.js"></script>
-    <script src="js/core/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-
-    <!-- Magnific Popup
-        =====================================-->
-    <script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup/magnific-popup-zoom-gallery.js"></script>
-
-    <!-- Progress Bars
-        =====================================-->
-    <script src="js/progress-bar/bootstrap-progressbar.min.js"></script>
-    <script src="js/progress-bar/bootstrap-progressbar-main.js"></script>
-
-    <!-- JQuery Main
-        =====================================-->
-    <script src="js/main/jquery.appear.js"></script>
-    <script src="js/main/isotope.pkgd.min.js"></script>
-    <script src="js/main/parallax.min.js"></script>
-    <script src="js/main/jquery.countTo.js"></script>
-    <script src="js/main/owl.carousel.min.js"></script>
-    <script src="js/main/jquery.sticky.js"></script>
-    <script src="js/main/ion.rangeSlider.min.js"></script>
-    <script src="js/main/imagesloaded.pkgd.min.js"></script>
-    <script src="js/main/main.js"></script>
-
-    <!-- Biblitecas do Toaster
-        ===================================-->
-    <script src="js/bootstrap-toastr/toastr.js"></script>
-    <link rel="stylesheet" href="js/bootstrap-toastr/toastr.css">
-
 </head>
 
 <body id="topPage" data-spy="scroll" data-target=".navbar" data-offset="100">
@@ -179,7 +146,7 @@
                 </div>
 
                 <div id="formLogin" class="inner cover text-center animated" data-animation="fadeIn" data-animation-delay="100">
-                    <br>
+                    
                     <h3 class="font-montserrat cover-heading mb20 mt20 pt50">Login</h3>
                     <form class="clearfix mb35" method="POST" action="">
                         <div class="col-sm-8 col-sm-offset-2">
@@ -194,7 +161,7 @@
                             <button class="button-o button-lg input-lg form-control button-circle button-success hover-rectangle-out" id="logins">Login</button><br><br>
                             <a href="#" class="color-dark">Esqueceu a password?</a><br>
                             <!-- falta configurar o sistema para fazer recovery da password -->
-                            <a href="#" class="color-dark" id="showFormRegister">Registe-se aqgora.</a>
+                            <a href="#" class="color-dark" id="showFormRegister">Registe-se agora.</a>
                         </div>
                     </form>
                     <br>
@@ -208,8 +175,7 @@
                                 placeholder="Username">
                         </div>
                         <div class="col-sm-8 col-sm-offset-2 mt10">
-                            <input type="email" autocomplete="off" name="email" id="email" class="form-control text-center no-border input-lg input-circle bg-light-transparent"
-                                placeholder="Email">
+                            <input type="email" autocomplete="off" name="email" id="email" class="form-control text-center no-border input-lg input-circle bg-light-transparent" placeholder="Email">
                         </div>
                         <div class="col-sm-8 col-sm-offset-2 mt10">
                             <input type="password" name="password" id="pass" class="form-control text-center no-border input-lg input-circle bg-light-transparent"
@@ -219,76 +185,23 @@
                             <input type="password" name="confpassword" id="pass_conf" class="form-control text-center no-border input-lg input-circle bg-light-transparent"
                                 placeholder="Confirme a Password">
                         </div>
+                        <div class="col-md-3 col-md-offset-2 mt10">
+                            <h4 class="font-montserrat color-dark">Género</h5>
+                        </div>
+                        <div class="col-md-5 col-md-offset-1 mt20 radio">
+                            <label class="color-dark pr10"><input type="radio" checked name="gender" value="male">Homem</label><tr>
+                            <label class="color-dark"><input type="radio" name="gender" value="female">Mulher</label>
+                        </div>
                         <div class="col-sm-8 col-sm-offset-2 mt5">
-                            <button class="button-o button-lg input-lg form-control button-circle button-success hover-rectangle-out" id="regis">Register Now</button><br><br>
+                            <a class="button-o button-lg input-lg form-control button-circle button-success hover-rectangle-out" id="regis">Registar </a><br><br>
                             <a href="#" class="color-dark" id="showFormLogin">Já tem uma conta? Faça Login aqui</a><br>
                         </div>
                     </form>
                     <br>
                 </div>
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#regis').bind('click', function (data) {
-                            data.preventDefault();
-                            $.ajax({
-                                url: 'trataregist.php',
-                                dataType: 'json',
-                                data: {
-                                    username: $('#usr').val(),
-                                    email: $('#email').val(),
-                                    password: $('#pass').val(),
-                                    password_conf: $('#pass_conf').val()
-                                },
-                                type: 'POST',
-                                success: function (data) {
-                                    if (data.status == 'success') {
-                                        toastr.success('Registro feito com sucesso', 'Sucesso!');
-                                        $('#usr').val("");
-                                        $('#email').val("");
-                                        $('#pass').val("");
-                                        $('#pass_conf').val("");
-                                    } else if (data.status == 'error') {
-                                        toastr.error('Não foi possível processar o pedido',
-                                            'Erro de ligação');
-                                    } else if (data.status == 'usr_error') {
-                                        toastr.error("Utilizador já existe!", "Error!");
-                                    } else if (data.status == 'email_error') {
-                                        toastr.error("Email já existe!", "Error!");
-                                    } else if (data.status == 'passwd_error') {
-                                        toastr.error("A password não corresponde!", "Error!");
-                                    }
-                                }
-                            });
-                        });
-                    });
-
-                    $(document).ready(function () {
-                        $('#logins').bind('click', function (data) {
-                            data.preventDefault();
-                            $.ajax({
-                                url: 'tratalogin.php',
-                                dataType: 'json',
-                                data: {
-                                    username: $('#usr_log').val(),
-                                    password: $('#pass_log').val()
-                                },
-                                type: 'POST',
-                                success: function (data) {
-                                    if (data.status == 'success') {
-                                        //toastr.success('Log in feito com sucesso', 'Sucesso!');
-                                        window.location.href="inicial.php";
-                                    }else if (data.status == 'error') {
-                                        toastr.error('Username ou Password incorretos.',
-                                            'Erro');
-                                    }
-                                }
-                            });
-                        });
-                    });
-                </script>
                 <div class="mastfoot">
                     <div class="inner pt50">
-                        <p class="color-light text-center">&copy;2016 Pasific Templare by Myboodesign.com</p>
+                        <p class="color-black text-center">&copy;2016 Pasific Templare by Myboodesign.com</p>
                     </div>
                 </div>
 
@@ -297,6 +210,38 @@
         </div>
 
     </div>
+    <!-- JQuery Core
+    =====================================-->
+    <script src="js/core/jquery.min.js"></script>
+    <script src="js/core/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <!-- Magnific Popup
+        =====================================-->
+    <script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup/magnific-popup-zoom-gallery.js"></script>
+
+    <!-- Progress Bars
+        =====================================-->
+    <script src="js/progress-bar/bootstrap-progressbar.min.js"></script>
+    <script src="js/progress-bar/bootstrap-progressbar-main.js"></script>
+
+    <!-- JQuery Main
+        =====================================-->
+    <script src="js/main/jquery.appear.js"></script>
+    <script src="js/main/isotope.pkgd.min.js"></script>
+    <script src="js/main/parallax.min.js"></script>
+    <script src="js/main/jquery.countTo.js"></script>
+    <script src="js/main/owl.carousel.min.js"></script>
+    <script src="js/main/jquery.sticky.js"></script>
+    <script src="js/main/ion.rangeSlider.min.js"></script>
+    <script src="js/main/imagesloaded.pkgd.min.js"></script>
+    <script src="js/main/main.js"></script>
+
+    <!-- Biblitecas do Toaster
+        ===================================-->
+    <script src="js/bootstrap-toastr/toastr.js"></script>
+    <link rel="stylesheet" href="js/bootstrap-toastr/toastr.css">
 
     <!-- Custom Script
         =====================================-->
@@ -313,7 +258,87 @@
             })
         })
     </script>
+    <!-- Scripts do registo/login com AJAX
+        =====================================-->
+    <script>
+        $(document).ready(function () {
+            function validateEmail(email) {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
 
+            function validate() {
+                var email = $("#email").val();
+                if (!validateEmail(email)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            $('#regis').bind('click', function(data) {
+                validate();
+                if (validate() == false ) {
+                    toastr.warning('Por favor insira um email válido.','Aviso!');
+                }else{
+                    data.preventDefault();
+                    $.ajax({
+                        url: 'trataregist.php',
+                        dataType: 'json',
+                        data: {
+                            username: $('#usr').val(),
+                            email: $('#email').val(),
+                            password: $('#pass').val(),
+                            password_conf: $('#pass_conf').val(),
+                            gender: $('input[name=gender]:checked').val()
+                        },
+                        type: 'POST',
+                        success: function (data) {
+                            if (data.status == 'success') {
+                                toastr.success('Registro feito com sucesso', 'Sucesso!');
+                                $('#usr').val("");
+                                $('#email').val("");
+                                $('#pass').val("");
+                                $('#pass_conf').val("");
+                            } else if (data.status == 'error') {
+                                toastr.error('Não foi possível processar o pedido',
+                                    'Erro de ligação');
+                            } else if (data.status == 'usr_error') {
+                                toastr.error("Utilizador já existe!", "Error!");
+                            } else if (data.status == 'email_error') {
+                                toastr.error("Email já existe!", "Error!");
+                            } else if (data.status == 'passwd_error') {
+                                toastr.error("A password não corresponde!", "Error!");
+                            }
+                        }
+                    });
+                }
+            });
+
+
+            $('#logins').bind('click', function (data) {
+                data.preventDefault();
+                $.ajax({
+                    url: 'tratalogin.php',
+                    dataType: 'json',
+                    data: {
+                        username: $('#usr_log').val(),
+                        password: $('#pass_log').val()
+                    },
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.status == 'success') {
+                            //toastr.success('Log in feito com sucesso', 'Sucesso!');
+                            window.location.href="inicial.php";
+                        }else if (data.status == 'error') {
+                            toastr.error('Username ou Password incorretos.',
+                                'Erro');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-
+    
 </html>

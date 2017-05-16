@@ -13,6 +13,7 @@ $row = mysqli_fetch_array($res);
 if($row['password'] == $pass)
 {
 	$_SESSION['user'] = $row['username'];
+	$_SESSION['type'] = $row['type_user'];
 	//header("Location: inicial.php");
 	$response_array['status'] = 'success';
 }
