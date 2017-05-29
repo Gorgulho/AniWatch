@@ -7,30 +7,22 @@ include ('bd/db.php'); //vai fazer conecção a base de dados
 
 if(isset($_SESSION['user']) && $_SESSION['type'] == 'admin') //se o utiliazador tiver com conta iniciada pode entrar na página
 {
-    $ID = $_GET['id'];
-    $BD = $_GET['bd'];
+    $ID = $_POST['id'];
+    $BD = $_POST['bd'];
 
     $sql = "DELETE FROM ".$BD." WHERE id=".$ID."";
 
     if ($conn->query($sql) === TRUE) {
-        ?>
-        <script type="text/javascript">
-    alert("Utilizador eliminado com sucesso");
-    </script>
-        <?php
-        header('Location: administracao.php');
+        $response_array['status'] = 'sucesso';
     } else {
-        ?>
-        <script type="text/javascript">
-    alert(<?php  echo "Error deleting record: " . $conn->error; ?>);
-    </script>
-        <?php
-        header('Location: administracao.php');
-    
+        $response_array['status'] = 'erro';
+
     }
 }
-else //se o utiliazador tiver com conta iniciada será rederecionado ao formulário de login/registo
+else //se o utiliazador não tiver conta iniciada ou não for admin será notificado de tal
 {
-        header('location:inicial.php'); //rederecionamento para o index
+        $response_array['status'] = 'erro_permi';
 }
-		
+
+header('Content-type: application/json');
+echo json_encode($response_array);

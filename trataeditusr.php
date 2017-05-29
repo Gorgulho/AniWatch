@@ -7,7 +7,11 @@ $pass = sha1($_POST['novapass']);
 $pass2 = sha1($_POST['novapass_conf']);
 $id = $_POST['id'];
 
-if($username != "")
+$res = mysqli_query($conn,"SELECT * FROM users WHERE id='".$id."'");
+
+$row = mysqli_fetch_array($res);
+
+if($username != $row['username'])
 {
     $check2 = "SELECT * FROM users WHERE username='".$username."'";
 
@@ -25,10 +29,10 @@ if($username != "")
             $response_array['status'] = 'error';
         }
     }
-    
+
 }
 
-if($email != "")
+if($email != $row['email'])
 {
     $check = "SELECT * FROM users WHERE email='".$email."'";
 
@@ -46,7 +50,7 @@ if($email != "")
             $response_array['status'] = 'error';
         }
     }
-    
+
 }
 
 if($pass != "da39a3ee5e6b4b0d3255bfef95601890afd80709")

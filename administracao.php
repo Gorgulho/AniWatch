@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
     <head>
         <title>AniWatch-Administração</title>
         <meta name="description" content="">
@@ -185,10 +185,12 @@
             </div>
 
         </header>
+        <br>
+        <body>
         <!-- fa-users  fa-cloud-upload   fa-eye-->
         <div class="col-md-12">
             <div class="panel-group" id="accordion1">
-
+            <!-- acordian-->
                 <div class="panel panel-light">
                     <div class="panel-heading">
                         <a href="#collapse1" class="collapsed accordian-toggle-chevron-left" data-toggle="collapse" data-parent="#accordion1">
@@ -198,48 +200,47 @@
                     <?php
                         include('bd/db.php');
 
-                        $sql = "SELECT * FROM users";  
-  
-                        $result = $conn->query($sql); 
+                        $sql1 = "SELECT * FROM users";
+
+                        $result1 = $conn->query($sql1);
                     ?>
                     <div id="collapse1" class="panel-collapse collapse in active">
                         <div class="panel-body">
-                            <section id="shortcodeTable">
-                                <div class="container pt10">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Username</th>
-                                                        <th>Email</th>
-                                                        <th>Tipo User</th>
-                                                        <th>Ações</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    while($row = $result->fetch_assoc()) {  
-                                                    echo "<tr>  
-                                                    <td>" . $row["id"]. "</td>  
-                                                    <td>" . $row["username"]. "</td>    
-                                                    <td>" . $row["email"]. "</td> 
-                                                    <td>" . $row["type_user"]. "</td>   
-                                                    <td> <a href='delete.php?id=".$row["id"]."&bd=users'><span class='color-dark'>Eliminar</span> </a> <a href='editar-usr.php?usr=".$row["username"]."'><span class='color-dark'>Editar</span> <a href='profile.php?usr=".$row["username"]."'><span class='color-dark'>Ver</span></td>
-                                                    </tr>";  
-                                                    }  
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                            <div class="container pt10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="tabelinha-user" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Tipo User</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while($row1 = $result1->fetch_assoc()) {
+                                                echo "<tr>
+                                                <td>" . $row1["id"]. "</td>
+                                                <td>" . $row1["username"]. "</td>
+                                                <td>" . $row1["email"]. "</td>
+                                                <td>" . $row1["type_user"]. "</td>
+                                                <td> <button class='button button-xs button-circle button-pasific eli1' data-id='".  $row1["id"] ."'>Eliminar</button> <a class='button button-xs button-circle button-yellow' href='editar-usr.php?usr=".$row1["username"]."'>Editar</a>  <a class='button button-xs button-circle button-success' href='profile.php?usr=".$row1["username"]."'>Ver</a></td>
+                                                </tr>";
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                        </table>
                                     </div>
                                 </div>
-                            </section>            
+                            </div>
                         </div>
                     </div>
                 </div>
-
+            <!-- acordian-->
                 <div class="panel panel-light">
                     <div class="panel-heading">
                         <a href="#collapse2" class="collapsed accordian-toggle-chevron-left" data-toggle="collapse" data-parent="#accordion1">
@@ -254,58 +255,83 @@
                         </div>
                     </div>
                 </div>
-
+            <!-- acordian-->
                 <div class="panel panel-light">
                     <div class="panel-heading">
                         <a href="#collapse3" class="collapsed accordian-toggle-chevron-left" data-toggle="collapse" data-parent="#accordion1">
                             <i class="fa fa-eye"></i>Animes
                         </a>
                     </div>
-                    <?php
-                    $sql3 = "SELECT * FROM animes";  
-  
-                        $result3 = $conn->query($sql); 
-                    ?>
+
                     <div id="collapse3" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class="container pt10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Titulo</th>
-                                                    <th>Estado</th>
-                                                    <th>Num Episódios</th>
-                                                    <th>Temporada</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                while($row = $result3->fetch_assoc()) {  
-                                                echo "<tr>  
-                                                <td align='center'>" . $row["id"]. "</td>  
-                                                <td>" . $row["username"]. "</td>  
-                                                <td>" . $row["picture"]. " </td>  
-                                                <td>" . $row["email"]. "</td> 
-                                                <td>" . $row["joined"]. "</td>
-                                                <td>" . $row["type_user"]. "</td>   
-                                                <td> <a href='administracao.php?del=".$row["id"]."'><span class='color-dark'>Eleminar</span> </a> <a href='#'><span class='color-dark'>Editar</span> </td>
-                                                </tr>";  
-                                                }  
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            sasasa
+                        </div>
+                </div>
+            </div>
+        <!-- acordian-->
+            <div class="panel panel-light">
+                <div class="panel-heading">
+                    <a href="#collapse4" class="collapsed accordian-toggle-chevron-left" data-toggle="collapse" data-parent="#accordion1">
+                        <i class="fa fa-user"></i>Personagens
+                    </a>
+                </div>
+
+                <div id="collapse4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        sasasa
+                    </div>
+                </div>
+            </div>
+        <!-- acordian-->
+            <div class="panel panel-light">
+                <div class="panel-heading">
+                    <a href="#collapse5" class="collapsed accordian-toggle-chevron-left" data-toggle="collapse" data-parent="#accordion1">
+                        <i class="fa fa-tags"></i>Gêneros
+                    </a>
+                </div>
+                <?php
+                    include('bd/db.php');
+
+                    $sql5 = "SELECT * FROM genres";
+
+                    $result5 = $conn->query($sql5);
+                ?>
+                <div id="collapse5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="container pt10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="tabelinha-genres" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Gêneros</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while($row5 = $result5->fetch_assoc()) {
+                                                echo "<tr>
+                                                <td>" . $row5["id"]. "</td>
+                                                <td>" . utf8_encode($row5["genre_name"]). "</td>
+                                                <td> <button class='button button-xs button-circle button-pasific eli5' data-id='".  $row5["id"] ."'>Eliminar</button> <a class='button button-xs button-circle button-yellow' href='editgenres.php?gen=".$row5["id"]."'>Editar</a></td>
+                                                </tr>";
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
+                        <a class="button-3d button-md button-rounded button-success" href="addgenres.php">Adicionar Gênero</a>
                     </div>
                 </div>
-
             </div>
-        </div>
+
+        </div><!-- final do div dos acordians-->
+    </div>
 
 
         <!-- JQuery Core
@@ -324,6 +350,183 @@
         <script src="js/main/ion.rangeSlider.min.js"></script>
         <script src="js/main/imagesloaded.pkgd.min.js"></script>
         <script src="js/main/main.js"></script>
+
+        <!-- inports DataTables -->
+        <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.15/css/dataTables.bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="datatables/Buttons-1.3.1/css/buttons.bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="datatables/Responsive-2.1.1/css/responsive.bootstrap.css"/>
+
+        <script type="text/javascript" src="datatables/JSZip-3.1.3/jszip.js"></script>
+        <script type="text/javascript" src="datatables/pdfmake-0.1.27/build/pdfmake.js"></script>
+        <script type="text/javascript" src="datatables/pdfmake-0.1.27/build/vfs_fonts.js"></script>
+        <script type="text/javascript" src="datatables/DataTables-1.10.15/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="datatables/DataTables-1.10.15/js/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" src="datatables/Buttons-1.3.1/js/dataTables.buttons.js"></script>
+        <script type="text/javascript" src="datatables/Buttons-1.3.1/js/buttons.bootstrap.js"></script>
+        <script type="text/javascript" src="datatables/Buttons-1.3.1/js/buttons.colVis.js"></script>
+        <script type="text/javascript" src="datatables/Buttons-1.3.1/js/buttons.html5.js"></script>
+        <script type="text/javascript" src="datatables/Buttons-1.3.1/js/buttons.print.js"></script>
+        <script type="text/javascript" src="datatables/Responsive-2.1.1/js/dataTables.responsive.js"></script>
+
+        <!-- Biblitecas do Toaster
+            ===================================-->
+        <script src="js/bootstrap-toastr/toastr.js"></script>
+        <link rel="stylesheet" href="js/bootstrap-toastr/toastr.css">
+
+        <script>
+            $(document).ready(function(){
+                var id;
+                var bd;
+                $(".eli1").click(function () {
+                     id = $(this).attr("data-id");
+                     bd = 'users';
+                    toastr["warning"]('<div>Têm a certeza de que deseja eliminar o udilizador com o ID ' + id + '? </div><div><button onClick="deleteMeSenpai()" class="button-o button-md button-square button-pasific hover-radial-out">Ok</button></div>');
+                });
+
+                $(".eli5").click(function () {
+                    id = $(this).attr("data-id");
+                    console.log(id)
+                     bd = 'genres';
+                    console.log('coisas');
+                    toastr["warning"]('<div>Têm a certeza de que deseja eliminar o gênero com o ID ' + id + '? </div><div><button onClick="deleteMeSenpai()" class="button-o button-md button-square button-pasific hover-radial-out">Ok</button></div>');
+                });
+
+                $('#tabelinha-user') //tabela dos utilizadores
+                    .addClass( 'nowrap' )
+                    .dataTable( {
+                        responsive: true,
+                        columnDefs: [
+                            { targets: [-1, -3], className: 'dt-body-right' }
+                        ],
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'excelHtml5',
+                                exportOptions: {
+                                    columns: ':visible'
+                                }
+                            },
+                            {
+                                extend: 'pdfHtml5',
+                                exportOptions: {
+                                    columns: ':visible'
+                                }
+                            },
+                            {
+                                extend: 'print',
+                                exportOptions: {
+                                    columns: ':visible'
+                                }
+                            },
+                            'colvis'
+                        ]
+                    });
+
+                var list = $('div.w-g-l > ul');
+                list.children(':gt(7)').css( 'display', 'none' );
+
+                var showingFull = false;
+                $('<li><a>Show more features...</a></li>')
+                    .on( 'click', function (e) {
+                        e.preventDefault;
+
+                        if ( showingFull ) {
+                            list.children(':gt(7)').css( 'display', 'none' );
+                            list.children(':last').css( 'display', 'block' );
+                            $('a', this).html('Show more features...');
+                            showingFull = false;
+                        }
+                        else {
+                            list.find('li').css( 'display', 'block' );
+                            $('a', this).html('Show less');
+                            showingFull = true;
+                        }
+                    } )
+                    .appendTo( list );
+
+                    $('#tabelinha-genres') //tabela dos gêneros
+                        .addClass( 'nowrap' )
+                        .dataTable( {
+                            responsive: true,
+                            columnDefs: [
+                                { targets: [-1, -3], className: 'dt-body-right' }
+                            ],
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    extend: 'excelHtml5',
+                                    exportOptions: {
+                                        columns: ':visible'
+                                    }
+                                },
+                                {
+                                    extend: 'pdfHtml5',
+                                    exportOptions: {
+                                        columns: ':visible'
+                                    }
+                                },
+                                {
+                                    extend: 'print',
+                                    exportOptions: {
+                                        columns: ':visible'
+                                    }
+                                },
+                                'colvis'
+                            ]
+                        });
+
+                    var list = $('div.w-g-l > ul');
+                    list.children(':gt(7)').css( 'display', 'none' );
+
+                    var showingFull = false;
+                    $('<li><a>Show more features...</a></li>')
+                        .on( 'click', function (e) {
+                            e.preventDefault;
+
+                            if ( showingFull ) {
+                                list.children(':gt(7)').css( 'display', 'none' );
+                                list.children(':last').css( 'display', 'block' );
+                                $('a', this).html('Show more features...');
+                                showingFull = false;
+                            }
+                            else {
+                                list.find('li').css( 'display', 'block' );
+                                $('a', this).html('Show less');
+                                showingFull = true;
+                            }
+                        } )
+                        .appendTo( list );
+
+
+                //ajax
+                function deleteMeSenpai() {
+                    $.ajax({
+                        url: 'delete.php',
+                        dataType: 'json',
+                        data: {
+                            id: id,
+                            bd: bd,
+                        },
+                        type: 'POST',
+                        success: function (data) {
+                            if (data.status == 'sucesso') {
+                                toastr.success('Registro feito com sucesso', 'Sucesso!');
+                                location.reload();
+                            } else if (data.status == 'erro') {
+                                toastr.error('Não foi possível processar o pedido',
+                                    'Erro de ligação');
+                            } else if (data.status == 'erro_permi') {
+                                window.location.href='inicial.php?access=negado';
+                            }
+                        },
+                        error: function(error) {
+                            toastr.error('Erro desconhecido',
+                                    'Erro');
+                        }
+                    });
+                };
+            });
+        </script>
 
     </body>
 </html>

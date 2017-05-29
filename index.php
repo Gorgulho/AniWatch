@@ -2,13 +2,13 @@
 		session_start();
 
 		include ('bd/db.php');
-		
+
 
 		if(isset($_SESSION['user']))
 		{
 			header('location:inicial.php');
 		}
-		
+
 ?>
 
 <!DOCTYPE html>
@@ -29,32 +29,32 @@
     <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
-    <!-- Load Core CSS 
+    <!-- Load Core CSS
         =====================================-->
     <link rel="stylesheet" href="css/core/bootstrap.min.css">
     <link rel="stylesheet" href="css/core/animate.min.css">
 
-    <!-- Load Main CSS 
+    <!-- Load Main CSS
         =====================================-->
     <link rel="stylesheet" href="css/main/main.css">
     <link rel="stylesheet" href="css/main/setting.css">
     <link rel="stylesheet" href="css/main/hover.css">
     <link rel="stylesheet" href="css/main/cover.css">
 
-    <!-- Load Magnific Popup CSS 
+    <!-- Load Magnific Popup CSS
         =====================================-->
     <link rel="stylesheet" href="css/magnific/magic.min.css">
     <link rel="stylesheet" href="css/magnific/magnific-popup.css">
     <link rel="stylesheet" href="css/magnific/magnific-popup-zoom-gallery.css">
 
-    <!-- Load OWL Carousel CSS 
+    <!-- Load OWL Carousel CSS
         =====================================-->
     <link rel="stylesheet" href="css/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="css/owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="css/owl-carousel/owl.transitions.css">
 
     <!-- Load Color CSS - Please uncomment to apply the color.
-        =====================================      
+        =====================================
         <link rel="stylesheet" href="css/color/blue.css">
         <link rel="stylesheet" href="css/color/brown.css">
         <link rel="stylesheet" href="css/color/cyan.css">
@@ -68,7 +68,7 @@
     <link rel="stylesheet" href="css/color/pasific.css">
 
     <!-- Load Fontbase Icons - Please Uncomment to use linea icons
-        =====================================       
+        =====================================
         <link rel="stylesheet" href="css/icon/linea-arrows-10.css">
         <link rel="stylesheet" href="css/icon/linea-basic-10.css">
         <link rel="stylesheet" href="css/icon/linea-basic-elaboration-10.css">
@@ -146,11 +146,11 @@
                 </div>
 
                 <div id="formLogin" class="inner cover text-center animated" data-animation="fadeIn" data-animation-delay="100">
-                    
+
                     <h3 class="font-montserrat cover-heading mb20 mt20 pt50">Login</h3>
                     <form class="clearfix mb35" method="POST" action="">
                         <div class="col-sm-8 col-sm-offset-2">
-                            <input type="text" autocomplete="off" name="username" id="usr_log" class="form-control text-center no-border input-lg input-circle bg-light-transparent" 
+                            <input type="text" autocomplete="off" name="username" id="usr_log" class="form-control text-center no-border input-lg input-circle bg-light-transparent"
                                 placeholder="Username/Email">
                         </div>
                         <div class="col-sm-8 col-sm-offset-2 mt10">
@@ -214,7 +214,7 @@
     =====================================-->
     <script src="js/core/jquery.min.js"></script>
     <script src="js/core/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.js"></script>-->
 
     <!-- Magnific Popup
         =====================================-->
@@ -300,6 +300,8 @@
                                 $('#email').val("");
                                 $('#pass').val("");
                                 $('#pass_conf').val("");
+                                $("#formLogin").removeClass("hidden");
+                                $("#formRegister").addClass("hidden");
                             } else if (data.status == 'error') {
                                 toastr.error('Não foi possível processar o pedido',
                                     'Erro de ligação');
@@ -337,8 +339,18 @@
                     }
                 });
             });
+			<?php
+	            if(isset($_GET['access'])){
+	                if($_GET['access']=="negado"){
+	        ?>
+	                    console.log("balls");
+	                    toastr.warning('Acesso negado!', 'Aviso');
+	        <?php
+	                }
+	            }
+	        ?>
         });
     </script>
 </body>
-    
+
 </html>
